@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiprovider_openrouter;
+namespace aiprovider_schooleesopenrouter;
 
 use core_ai\hook\after_ai_provider_form_hook;
 
 /**
  * Hook listeners for the OpenRouter AI provider plugin.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2026 Schoolees
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,8 +31,8 @@ class hook_listener {
      *
      * @param after_ai_provider_form_hook $hook
      */
-    public static function set_form_definition_for_aiprovider_openrouter(after_ai_provider_form_hook $hook): void {
-        if ($hook->plugin !== 'aiprovider_openrouter') {
+    public static function set_form_definition_for_aiprovider_schooleesopenrouter(after_ai_provider_form_hook $hook): void {
+        if ($hook->plugin !== 'aiprovider_schooleesopenrouter') {
             return;
         }
 
@@ -43,15 +43,15 @@ class hook_listener {
 
         // Use the core QuickForm 'password' element for maximum compatibility.
         // (Some environments don’t have Moodle's password-unmask element available in this form context.)
-        $mform->addElement('password', 'apikey', get_string('apikey', 'aiprovider_openrouter'));
+        $mform->addElement('password', 'apikey', get_string('apikey', 'aiprovider_schooleesopenrouter'));
         $mform->setType('apikey', PARAM_TEXT);
         $mform->addRule('apikey', null, 'required', null, 'client');
         $mform->setDefault('apikey', $providerconfig['apikey'] ?? '');
-        $mform->addElement('static', 'apikey_desc', '', get_string('apikey_desc', 'aiprovider_openrouter'));
+        $mform->addElement('static', 'apikey_desc', '', get_string('apikey_desc', 'aiprovider_schooleesopenrouter'));
 
-        $mform->addElement('text', 'orgid', get_string('orgid', 'aiprovider_openrouter'));
+        $mform->addElement('text', 'orgid', get_string('orgid', 'aiprovider_schooleesopenrouter'));
         $mform->setType('orgid', PARAM_TEXT);
         $mform->setDefault('orgid', $providerconfig['orgid'] ?? '');
-        $mform->addElement('static', 'orgid_desc', '', get_string('orgid_desc', 'aiprovider_openrouter'));
+        $mform->addElement('static', 'orgid_desc', '', get_string('orgid_desc', 'aiprovider_schooleesopenrouter'));
     }
 }

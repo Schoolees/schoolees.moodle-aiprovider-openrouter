@@ -14,21 +14,21 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiprovider_openrouter\form;
+namespace aiprovider_schooleesopenrouter\form;
 
 use core_ai\form\action_settings_form;
 
 /**
  * Action settings form for text actions (generate_text / summarise_text).
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2026 Schoolees
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class action_generate_text_form extends action_settings_form {
     #[\Override]
     protected function definition(): void {
-        \aiprovider_openrouter\compat::ensure_moodle_pear_loaded();
+        \aiprovider_schooleesopenrouter\compat::ensure_moodle_pear_loaded();
 
         $mform = $this->_form;
 
@@ -61,7 +61,7 @@ class action_generate_text_form extends action_settings_form {
         $mform->addElement(
             'text',
             'model',
-            get_string("action:{$actionname}:model", 'aiprovider_openrouter')
+            get_string("action:{$actionname}:model", 'aiprovider_schooleesopenrouter')
         );
         $mform->setType('model', PARAM_TEXT);
         $mform->addRule('model', null, 'required', null, 'client');
@@ -70,7 +70,7 @@ class action_generate_text_form extends action_settings_form {
         $mform->addElement(
             'text',
             'endpoint',
-            get_string("action:{$actionname}:endpoint", 'aiprovider_openrouter')
+            get_string("action:{$actionname}:endpoint", 'aiprovider_schooleesopenrouter')
         );
         $mform->setType('endpoint', PARAM_URL);
         $mform->addRule('endpoint', null, 'required', null, 'client');
@@ -79,7 +79,7 @@ class action_generate_text_form extends action_settings_form {
         $mform->addElement(
             'text',
             'temperature',
-            get_string("action:{$actionname}:temperature", 'aiprovider_openrouter')
+            get_string("action:{$actionname}:temperature", 'aiprovider_schooleesopenrouter')
         );
         $mform->setType('temperature', PARAM_FLOAT);
         $mform->setDefault('temperature', $settings['temperature'] ?? '0.2');
@@ -87,10 +87,13 @@ class action_generate_text_form extends action_settings_form {
         $mform->addElement(
             'textarea',
             'systeminstruction',
-            get_string("action:{$actionname}:systeminstruction", 'aiprovider_openrouter'),
+            get_string("action:{$actionname}:systeminstruction", 'aiprovider_schooleesopenrouter'),
             ['rows' => 8, 'cols' => 80]
         );
         $mform->setType('systeminstruction', PARAM_TEXT);
-        $mform->setDefault('systeminstruction', $settings['systeminstruction'] ?? ($action ? $action::get_system_instruction() : ''));
+        $mform->setDefault(
+            'systeminstruction',
+            $settings['systeminstruction'] ?? ($action ? $action::get_system_instruction() : '')
+        );
     }
 }

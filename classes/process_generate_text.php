@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiprovider_openrouter;
+namespace aiprovider_schooleesopenrouter;
 
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
@@ -25,7 +25,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * Class process text generation.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -70,7 +70,6 @@ class process_generate_text extends abstract_processor {
             $systemobj->content = $systeminstruction;
             $requestobj->messages = [$systemobj, $userobj];
         } else {
-
             $requestobj->messages = [$userobj];
         }
         return new Request(

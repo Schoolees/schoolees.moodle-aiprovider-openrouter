@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiprovider_openrouter;
+namespace aiprovider_schooleesopenrouter;
 
 use core_ai\aiactions;
 use core_ai\form\action_settings_form;
@@ -24,7 +24,7 @@ use Psr\Http\Message\RequestInterface;
 /**
  * Class provider.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -40,7 +40,7 @@ class provider extends \core_ai\provider {
         if (isset($this->config[$key])) {
             return $this->config[$key];
         }
-        $legacy = get_config('aiprovider_openrouter', $key);
+        $legacy = get_config('aiprovider_schooleesopenrouter', $key);
         return $legacy !== false && $legacy !== null ? $legacy : $default;
     }
 
@@ -102,11 +102,13 @@ class provider extends \core_ai\provider {
         $enableuserratelimit = (bool) $this->get_provider_setting('enableuserratelimit', false);
         $userratelimit = (int) $this->get_provider_setting('userratelimit', 0);
         if ($enableuserratelimit) {
-            if (!$ratelimiter->check_user_rate_limit(
-                component: $component,
-                ratelimit: $userratelimit,
-                userid: $action->get_configuration('userid')
-            )) {
+            if (
+                !$ratelimiter->check_user_rate_limit(
+                    component: $component,
+                    ratelimit: $userratelimit,
+                    userid: $action->get_configuration('userid')
+                )
+            ) {
                 return [
                     'success' => false,
                     'errorcode' => 429,
@@ -119,10 +121,12 @@ class provider extends \core_ai\provider {
         $enableglobalratelimit = (bool) $this->get_provider_setting('enableglobalratelimit', false);
         $globalratelimit = (int) $this->get_provider_setting('globalratelimit', 0);
         if ($enableglobalratelimit) {
-            if (!$ratelimiter->check_global_rate_limit(
-                component: $component,
-                ratelimit: $globalratelimit
-            )) {
+            if (
+                !$ratelimiter->check_global_rate_limit(
+                    component: $component,
+                    ratelimit: $globalratelimit
+                )
+            ) {
                 return [
                     'success' => false,
                     'errorcode' => 429,
@@ -147,9 +151,11 @@ class provider extends \core_ai\provider {
         $customdata['action'] = $action;
 
         if ($actionname === 'generate_text' || $actionname === 'summarise_text') {
-            return new \aiprovider_openrouter\form\action_generate_text_form(null, $customdata);
+            return new \aiprovider_schooleesopenrouter\form\action_generate_text_form(
+                null,
+                $customdata
+            );
         }
-
 
         return false;
     }

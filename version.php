@@ -15,18 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information for aiprovider_openrouter.
+ * Version information for aiprovider_schooleesopenrouter.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'aiprovider_openrouter';
-$plugin->version = 2026021700;
-$plugin->release = 'v1.0.0';
+$plugin->component = 'aiprovider_schooleesopenrouter';
+$plugin->version = 2026021701;
+$plugin->release = 'v1.0.1';
 $plugin->requires = 2025041400;
 $plugin->supported = [500, 599];
 $plugin->maturity = MATURITY_STABLE;

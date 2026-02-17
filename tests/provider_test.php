@@ -14,15 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiprovider_openrouter;
+namespace aiprovider_schooleesopenrouter;
 
 /**
  * Test OpenAI provider methods.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers     \aiprovider_openrouter\provider
+ * @covers     \aiprovider_schooleesopenrouter\provider
  */
 final class provider_test extends \advanced_testcase {
     /**
@@ -74,10 +74,10 @@ final class provider_test extends \advanced_testcase {
         $this->resetAfterTest();
 
         // Set plugin config rate limiter settings.
-        set_config('enableglobalratelimit', 1, 'aiprovider_openrouter');
-        set_config('globalratelimit', 5, 'aiprovider_openrouter');
-        set_config('enableuserratelimit', 1, 'aiprovider_openrouter');
-        set_config('userratelimit', 3, 'aiprovider_openrouter');
+        set_config('enableglobalratelimit', 1, 'aiprovider_schooleesopenrouter');
+        set_config('globalratelimit', 5, 'aiprovider_schooleesopenrouter');
+        set_config('enableuserratelimit', 1, 'aiprovider_schooleesopenrouter');
+        set_config('userratelimit', 3, 'aiprovider_schooleesopenrouter');
 
         $contextid = 1;
         $userid = 1;
@@ -139,14 +139,14 @@ final class provider_test extends \advanced_testcase {
         $this->assertFalse($provider->is_provider_configured());
 
         // Partially configured values.
-        set_config('apikey', '123', 'aiprovider_openrouter');
-        set_config('orgid', '', 'aiprovider_openrouter');
+        set_config('apikey', '123', 'aiprovider_schooleesopenrouter');
+        set_config('orgid', '', 'aiprovider_schooleesopenrouter');
         $provider = $this->create_provider();
         $this->assertTrue($provider->is_provider_configured());
 
         // Properly configured values.
-        set_config('apikey', '123', 'aiprovider_openrouter');
-        set_config('orgid', 'abc', 'aiprovider_openrouter');
+        set_config('apikey', '123', 'aiprovider_schooleesopenrouter');
+        set_config('orgid', 'abc', 'aiprovider_schooleesopenrouter');
         $provider = $this->create_provider();
         $this->assertTrue($provider->is_provider_configured());
     }

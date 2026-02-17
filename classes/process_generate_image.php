@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiprovider_openrouter;
+namespace aiprovider_schooleesopenrouter;
 
 use core\http_client;
 use core_ai\ai_image;
@@ -27,7 +27,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * Class process image generation.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

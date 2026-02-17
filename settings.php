@@ -17,7 +17,7 @@
 /**
  * Plugin administration pages are defined here.
  *
- * @package     aiprovider_openrouter
+ * @package     aiprovider_schooleesopenrouter
  * @copyright   2024 Marcus Green
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -34,75 +34,88 @@ if (!empty($CFG->version) && $CFG->version >= 2025041400) {
 if ($hassiteconfig) {
     // Provider specific settings heading.
     $settings = new \core_ai\admin\admin_settingspage_provider(
-        'aiprovider_openrouter',
-        new lang_string('pluginname', 'aiprovider_openrouter'),
+        'aiprovider_schooleesopenrouter',
+        new lang_string('pluginname', 'aiprovider_schooleesopenrouter'),
         'moodle/site:config',
         true,
     );
 
     $settings->add(new admin_setting_heading(
-        'aiprovider_openrouter/general',
+        'aiprovider_schooleesopenrouter/general',
         new lang_string('settings', 'core'),
         '',
     ));
 
     // Setting to store OpenRouter API key.
     $settings->add(new admin_setting_configpasswordunmask(
-        'aiprovider_openrouter/apikey',
-        new lang_string('apikey', 'aiprovider_openrouter'),
-        new lang_string('apikey_desc', 'aiprovider_openrouter'),
+        'aiprovider_schooleesopenrouter/apikey',
+        new lang_string('apikey', 'aiprovider_schooleesopenrouter'),
+        new lang_string('apikey_desc', 'aiprovider_schooleesopenrouter'),
         '',
     ));
 
     // Setting to store OpenRouter organization ID.
     $settings->add(new admin_setting_configtext(
-        'aiprovider_openrouter/orgid',
-        new lang_string('orgid', 'aiprovider_openrouter'),
-        new lang_string('orgid_desc', 'aiprovider_openrouter'),
+        'aiprovider_schooleesopenrouter/orgid',
+        new lang_string('orgid', 'aiprovider_schooleesopenrouter'),
+        new lang_string('orgid_desc', 'aiprovider_schooleesopenrouter'),
         '',
         PARAM_TEXT,
     ));
 
     // Setting to enable/disable global rate limiting.
     $settings->add(new admin_setting_configcheckbox(
-        'aiprovider_openrouter/enableglobalratelimit',
-        new lang_string('enableglobalratelimit', 'aiprovider_openrouter'),
-        new lang_string('enableglobalratelimit_desc', 'aiprovider_openrouter'),
+        'aiprovider_schooleesopenrouter/enableglobalratelimit',
+        new lang_string('enableglobalratelimit', 'aiprovider_schooleesopenrouter'),
+        new lang_string('enableglobalratelimit_desc', 'aiprovider_schooleesopenrouter'),
         0,
     ));
 
     // Setting to set how many requests per hour are allowed for the global rate limit.
     // Should only be enabled when global rate limiting is enabled.
     $settings->add(new admin_setting_configtext(
-        'aiprovider_openrouter/globalratelimit',
-        new lang_string('globalratelimit', 'aiprovider_openrouter'),
-        new lang_string('globalratelimit_desc', 'aiprovider_openrouter'),
+        'aiprovider_schooleesopenrouter/globalratelimit',
+        new lang_string('globalratelimit', 'aiprovider_schooleesopenrouter'),
+        new lang_string('globalratelimit_desc', 'aiprovider_schooleesopenrouter'),
         100,
         PARAM_INT,
     ));
-    $settings->hide_if('aiprovider_openrouter/globalratelimit', 'aiprovider_openrouter/enableglobalratelimit', 'eq', 0);
+    $settings->hide_if(
+        'aiprovider_schooleesopenrouter/globalratelimit',
+        'aiprovider_schooleesopenrouter/enableglobalratelimit',
+        'eq',
+        0
+    );
 
     // Setting to enable/disable user rate limiting.
     $settings->add(new admin_setting_configcheckbox(
-        'aiprovider_openrouter/enableuserratelimit',
-        new lang_string('enableuserratelimit', 'aiprovider_openrouter'),
-        new lang_string('enableuserratelimit_desc', 'aiprovider_openrouter'),
+        'aiprovider_schooleesopenrouter/enableuserratelimit',
+        new lang_string('enableuserratelimit', 'aiprovider_schooleesopenrouter'),
+        new lang_string('enableuserratelimit_desc', 'aiprovider_schooleesopenrouter'),
         0,
     ));
 
     // Setting to set how many requests per hour are allowed for the user rate limit.
     // Should only be enabled when user rate limiting is enabled.
     $settings->add(new admin_setting_configtext(
-        'aiprovider_openrouter/userratelimit',
-        new lang_string('userratelimit', 'aiprovider_openrouter'),
-        new lang_string('userratelimit_desc', 'aiprovider_openrouter'),
+        'aiprovider_schooleesopenrouter/userratelimit',
+        new lang_string('userratelimit', 'aiprovider_schooleesopenrouter'),
+        new lang_string('userratelimit_desc', 'aiprovider_schooleesopenrouter'),
         10,
         PARAM_INT,
     ));
-    $settings->hide_if('aiprovider_openrouter/userratelimit', 'aiprovider_openrouter/enableuserratelimit', 'eq', 0);
+    $settings->hide_if(
+        'aiprovider_schooleesopenrouter/userratelimit',
+        'aiprovider_schooleesopenrouter/enableuserratelimit',
+        'eq',
+        0
+    );
 
-    $url = new moodle_url('../ai/provider/openrouter/test_connection.php');
-    $link = html_writer::link($url, get_string('testaiservices', 'aiprovider_openrouter'));
-    $settings->add(new admin_setting_heading('testaiconfiguration', new lang_string('testaiconfiguration', 'aiprovider_openrouter'),
-        new lang_string('testoutgoingmaildetail', 'admin', $link)));
+    $url = new moodle_url('../ai/provider/schooleesopenrouter/test_connection.php');
+    $link = html_writer::link($url, get_string('testaiservices', 'aiprovider_schooleesopenrouter'));
+    $settings->add(new admin_setting_heading(
+        'testaiconfiguration',
+        new lang_string('testaiconfiguration', 'aiprovider_schooleesopenrouter'),
+        new lang_string('testoutgoingmaildetail', 'admin', $link),
+    ));
 }

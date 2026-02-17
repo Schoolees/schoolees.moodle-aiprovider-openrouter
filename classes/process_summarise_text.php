@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiprovider_openrouter;
+namespace aiprovider_schooleesopenrouter;
 
 use GuzzleHttp\Psr7\Uri;
 use Psr\Http\Message\UriInterface;
@@ -22,7 +22,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * Class process text summarisation.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -40,12 +40,16 @@ class process_summarise_text extends process_generate_text {
     #[\Override]
     protected function get_system_instruction(): string {
         // Start with the configured instruction (or the core default).
-        $instruction = (string) $this->get_action_setting('systeminstruction', $this->action::get_system_instruction());
+        $instruction = (string) $this->get_action_setting(
+            'systeminstruction',
+            $this->action::get_system_instruction()
+        );
 
         // Enforce a hard cap on the summarisation length.
         // We keep this in the provider so it applies even if the admin never edits the instruction.
         $wordlimit = 500;
-        $instruction .= "\n\nLimit the summary to a maximum of {$wordlimit} words. Write it as a single paragraph (no bullet points, no line breaks).";
+        $instruction .= "\n\nLimit the summary to a maximum of {$wordlimit} words. "
+            . 'Write it as a single paragraph (no bullet points, no line breaks).';
 
         return $instruction;
     }
@@ -54,7 +58,6 @@ class process_summarise_text extends process_generate_text {
     protected function get_temperature(): string {
         return (string) $this->get_action_setting('temperature', '0.2');
     }
-
 
     /**
      * Handle a successful response from the external AI api.

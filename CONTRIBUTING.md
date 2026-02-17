@@ -1,11 +1,11 @@
 # Contributing
 
 ## Scope
-This repository contains the Moodle AI provider plugin `aiprovider_openrouter`.
+This repository contains the Moodle AI provider plugin `aiprovider_schooleesopenrouter`.
 
 ## Versioning
 - Public releases use Semantic Versioning and Git tags: `vMAJOR.MINOR.PATCH`.
-- Current release line starts at `v1.0.0`.
+- Current release line starts at `v1.0.1`.
 - Moodle plugin upgrade version remains numeric in `version.php` (`$plugin->version`) and must increase for every release.
 - Human-readable release version is defined in `version.php` as `$plugin->release`.
 

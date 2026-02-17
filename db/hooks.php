@@ -17,7 +17,7 @@
 /**
  * Hook callbacks for the OpenRouter AI provider.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2026 Schoolees
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,7 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 $callbacks = [
     [
         'hook' => \core_ai\hook\after_ai_provider_form_hook::class,
-        'callback' => \aiprovider_openrouter\hook_listener::class . '::set_form_definition_for_aiprovider_openrouter',
+        'callback' => \aiprovider_schooleesopenrouter\hook_listener::class .
+            '::set_form_definition_for_aiprovider_schooleesopenrouter',
         'priority' => 0,
     ],
 ];

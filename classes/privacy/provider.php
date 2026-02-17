@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiprovider_openrouter\privacy;
+namespace aiprovider_schooleesopenrouter\privacy;
 
 use core_privacy\local\metadata\collection;
 use core_privacy\local\request\approved_contextlist;
@@ -25,7 +25,7 @@ use core_privacy\local\request\userlist;
 /**
  * Privacy provider implementation for OpenAI provider
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @codeCoverageIgnore
@@ -36,12 +36,12 @@ class provider implements
     \core_privacy\local\request\plugin\provider {
     #[\Override]
     public static function get_metadata(collection $collection): collection {
-        $collection->add_external_location_link('aiprovider_openrouter', [
-            'prompttext' => 'privacy:metadata:aiprovider_openrouter:prompttext',
-            'model' => 'privacy:metadata:aiprovider_openrouter:model',
-            'numberimages' => 'privacy:metadata:aiprovider_openrouter:numberimages',
-            'responseformat' => 'privacy:metadata:aiprovider_openrouter:responseformat',
-        ], 'privacy:metadata:aiprovider_openrouter:externalpurpose');
+        $collection->add_external_location_link('aiprovider_schooleesopenrouter', [
+            'prompttext' => 'privacy:metadata:aiprovider_schooleesopenrouter:prompttext',
+            'model' => 'privacy:metadata:aiprovider_schooleesopenrouter:model',
+            'numberimages' => 'privacy:metadata:aiprovider_schooleesopenrouter:numberimages',
+            'responseformat' => 'privacy:metadata:aiprovider_schooleesopenrouter:responseformat',
+        ], 'privacy:metadata:aiprovider_schooleesopenrouter:externalpurpose');
         return $collection;
     }
 

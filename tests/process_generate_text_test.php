@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiprovider_openrouter;
+namespace aiprovider_schooleesopenrouter;
 
-use aiprovider_openrouter\process_generate_text;
+use aiprovider_schooleesopenrouter\process_generate_text;
 use core_ai\aiactions\base;
 use core_ai\provider;
 use GuzzleHttp\Psr7\Response;
@@ -24,12 +24,12 @@ use GuzzleHttp\Psr7\Response;
 /**
  * Test Generate text provider class for OpenAI provider methods.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers     \aiprovider_openrouter\provider
- * @covers     \aiprovider_openrouter\process_generate_text
- * @covers     \aiprovider_openrouter\abstract_processor
+ * @covers     \aiprovider_schooleesopenrouter\provider
+ * @covers     \aiprovider_schooleesopenrouter\process_generate_text
+ * @covers     \aiprovider_schooleesopenrouter\abstract_processor
  */
 final class process_generate_text_test extends \advanced_testcase {
     /** @var string A successful response in JSON format. */
@@ -47,8 +47,10 @@ final class process_generate_text_test extends \advanced_testcase {
     protected function setUp(): void {
         parent::setUp();
         // Load a response body from a file.
-        $this->responsebodyjson = file_get_contents(self::get_fixture_path('aiprovider_openrouter', 'text_request_success.json'));
-        set_config('action_generate_text_systeminstruction', 'You are a helpful assistant.', 'aiprovider_openrouter');
+        $this->responsebodyjson = file_get_contents(
+            self::get_fixture_path('aiprovider_schooleesopenrouter', 'text_request_success.json')
+        );
+        set_config('action_generate_text_systeminstruction', 'You are a helpful assistant.', 'aiprovider_schooleesopenrouter');
         $this->create_provider();
         $this->create_action();
     }
@@ -57,7 +59,7 @@ final class process_generate_text_test extends \advanced_testcase {
      * Create the provider object.
      */
     private function create_provider(): void {
-        $this->provider = new \aiprovider_openrouter\provider(
+        $this->provider = new \aiprovider_schooleesopenrouter\provider(
             enabled: true,
             name: 'OpenRouter',
             description: '',
@@ -158,7 +160,6 @@ final class process_generate_text_test extends \advanced_testcase {
         $this->assertEquals('stop', $result['finishreason']);
         $this->assertEquals('11', $result['prompttokens']);
         $this->assertEquals('568', $result['completiontokens']);
-
     }
 
     /**
@@ -308,8 +309,8 @@ final class process_generate_text_test extends \advanced_testcase {
         $clock = $this->mock_clock_with_frozen();
 
         // Set the user rate limiter.
-        set_config('enableuserratelimit', 1, 'aiprovider_openrouter');
-        set_config('userratelimit', 1, 'aiprovider_openrouter');
+        set_config('enableuserratelimit', 1, 'aiprovider_schooleesopenrouter');
+        set_config('userratelimit', 1, 'aiprovider_schooleesopenrouter');
 
         // Mock the http client to return a successful response.
         ['mock' => $mock] = $this->get_mocked_http_client();
@@ -389,8 +390,8 @@ final class process_generate_text_test extends \advanced_testcase {
         $clock = $this->mock_clock_with_frozen();
 
         // Set the global rate limiter.
-        set_config('enableglobalratelimit', 1, 'aiprovider_openrouter');
-        set_config('globalratelimit', 1, 'aiprovider_openrouter');
+        set_config('enableglobalratelimit', 1, 'aiprovider_schooleesopenrouter');
+        set_config('globalratelimit', 1, 'aiprovider_schooleesopenrouter');
 
         // Mock the http client to return a successful response.
         ['mock' => $mock] = $this->get_mocked_http_client();

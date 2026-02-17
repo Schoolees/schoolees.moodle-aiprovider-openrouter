@@ -17,7 +17,7 @@
 /**
  * Admin-only diagnostic page for verifying OpenRouter provider configuration.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,7 +27,7 @@ require('../../../config.php');
 require_login();
 require_admin();
 
-$url = new moodle_url('/ai/provider/openrouter/test_connection.php', []);
+$url = new moodle_url('/ai/provider/schooleesopenrouter/test_connection.php', []);
 $PAGE->set_url($url);
 $PAGE->set_context(context_system::instance());
 $context = context_system::instance();

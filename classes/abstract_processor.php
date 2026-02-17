@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiprovider_openrouter;
+namespace aiprovider_schooleesopenrouter;
 
 use core\http_client;
 use core_ai\aiactions\responses\response_base;
@@ -28,7 +28,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * Class process text generation.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -77,7 +77,7 @@ abstract class abstract_processor extends process_base {
         }
 
         $actionname = $this->get_action_name();
-        $legacy = get_config('aiprovider_openrouter', "action_{$actionname}_{$key}");
+        $legacy = get_config('aiprovider_schooleesopenrouter', "action_{$actionname}_{$key}");
         return $legacy !== false && $legacy !== null ? $legacy : $default;
     }
 
@@ -209,7 +209,7 @@ abstract class abstract_processor extends process_base {
 
         $message = '';
         if (is_array($bodyarr)) {
-            // OpenAI/OpenRouter-style: {"error": {"message": "..."}}.
+            // OpenAI/OpenRouter error object style with nested message field.
             if (!empty($bodyarr['error']['message']) && is_string($bodyarr['error']['message'])) {
                 $message = $bodyarr['error']['message'];
             } else if (!empty($bodyarr['message']) && is_string($bodyarr['message'])) {

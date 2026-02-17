@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component aiprovider_openrouter, language 'en'.
+ * Strings for component aiprovider_schooleesopenrouter, language 'en'.
  *
- * @package    aiprovider_openrouter
+ * @package    aiprovider_schooleesopenrouter
  * @copyright  2024 Marcus Green
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -54,12 +54,12 @@ $string['orgid'] = 'OpenRouter organization ID';
 $string['orgid_desc'] = 'Get your OpenRouter organization ID from your <a href="https://openrouter.ai/settings" target="_blank">openrouter account</a>.';
 $string['pluginname'] = 'Schoolees OpenRouter AI Provider';
 $string['privacy:metadata'] = 'The Schoolees OpenRouter AI provider plugin does not store any personal data.';
-$string['privacy:metadata:aiprovider_openrouter:externalpurpose'] = 'This information is sent to the openrouter API in order for a response to be generated. Your openrouter account settings may change how openrouter stores and retains this data. No user data is explicitly sent to openrouter or stored in Moodle LMS by this plugin.';
-$string['privacy:metadata:aiprovider_openrouter:model'] = 'The model used to generate the response.';
-$string['privacy:metadata:aiprovider_openrouter:numberimages'] = 'The number of images used in the response. When generating images.';
-$string['privacy:metadata:aiprovider_openrouter:prompttext'] = 'The user entered text prompt used to generate the response.';
-$string['privacy:metadata:aiprovider_openrouter:responseformat'] = 'The format of the response. When generating images.';
-$string['userratelimit'] = 'Maximum number of requests per user';
-$string['userratelimit_desc'] = 'The number of requests allowed per hour, per user.';
+$string['privacy:metadata:aiprovider_schooleesopenrouter:externalpurpose'] = 'This information is sent to the openrouter API in order for a response to be generated. Your openrouter account settings may change how openrouter stores and retains this data. No user data is explicitly sent to openrouter or stored in Moodle LMS by this plugin.';
+$string['privacy:metadata:aiprovider_schooleesopenrouter:model'] = 'The model used to generate the response.';
+$string['privacy:metadata:aiprovider_schooleesopenrouter:numberimages'] = 'The number of images used in the response. When generating images.';
+$string['privacy:metadata:aiprovider_schooleesopenrouter:prompttext'] = 'The user entered text prompt used to generate the response.';
+$string['privacy:metadata:aiprovider_schooleesopenrouter:responseformat'] = 'The format of the response. When generating images.';
 $string['testaiconfiguration'] = 'Test AI configuration';
 $string['testaiservices'] = 'Make a test request to the external system to confirm the configuration is correct';
+$string['userratelimit'] = 'Maximum number of requests per user';
+$string['userratelimit_desc'] = 'The number of requests allowed per hour, per user.';
